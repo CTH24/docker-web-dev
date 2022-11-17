@@ -10,7 +10,6 @@ echo "CTH24 - web-dev-docker"
 echo "----------------------"
 echo
 echo "Project: ${PROJECT}"
-echo "Project folder: ${PROJECT_PATH}"
 echo
 echo "Select System for Development:"
 echo "1) PHP"

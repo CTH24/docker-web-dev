@@ -24,6 +24,25 @@ Dockerfiles for web development
 2. MariaDB
 3. Redis
 
+## Installation
+
+### Full
+```bash
+git clone https://github.com/CTH24/web-dev-docker.git
+cd web-dev-docker
+./bin/build-images
+```
+
+### Quick
+```bash
+mkdir <project>
+cd <project>
+git clone https://github.com/CTH24/web-dev-docker.git --depth 1 .
+rm -rf .git
+./start
+```
+
+
 ## Commands
 
 ```bash
