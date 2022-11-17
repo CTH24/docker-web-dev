@@ -10,13 +10,21 @@ echo "Project: ${PROJECT}"
 echo "Project folder: ${PROJECT_FOLDER}"
 echo
 echo "Select Symfony Version"
-echo "1) Symfony 5.4 LTS (skeleton)"
+echo "1) Symfony 4.4 LTS"
+echo "2) Symfony 5.4 LTS (recommended)"
+echo "3) Symfony 6.0"
+echo "4) Symfony 6.1 (current)"
+echo "5) Symfony 6.2 (dev)"
 echo
 echo "q) Quit"
 echo
 read -r -p "Enter your choice: " choice
 case "$choice" in
-  1) ./bin/setup-symfony-5.4 ;;
+  1) ./bin/setup-symfony-4.4 ;;
+  2) ./bin/setup-symfony-5.4 ;;
+  3) ./bin/setup-symfony-6.0 ;;
+  4) ./bin/setup-symfony-6.1 ;;
+  5) ./bin/setup-symfony-6.2 ;;
   q) exit ;;
   *) echo "invalid" ;;
 esac

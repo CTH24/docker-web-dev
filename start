@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 
 if [ ! -f .env ]; then
-  ./setup
-  exit
+  PROJECT_PATH="$(
+    cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit
+    pwd -P
+  )"
+  PROJECT="$(basename "$PROJECT_PATH")"
+  PHP_VERSION="8.1"
+  echo 'PROJECT="'"${PROJECT}"'"' >.env
+  echo 'PROJECT_PATH="'"${PROJECT_PATH}"'"' >>.env
+  echo 'PHP_VERSION="'"${PHP_VERSION}"'"' >>.env
+  ./bin/setup
+else
+  . .env
+  ./bin/start-container
+  ./bin/terminal
 fi
-
-. .env
-
-cd docker || exit
-cp "${PROJECT_PATH}/.env" "${PROJECT_PATH}"/docker/.env
-docker compose --project-name "${PROJECT}" up -d
-cd ..
-rm "${PROJECT_PATH}"/docker/.env
-
-echo
-echo "http://${PROJECT}.localhost"
-echo
-
-./terminal
-./stop

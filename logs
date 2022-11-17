@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-. .env
-
-clear
-echo
-echo "php - error.log"
-echo
-docker exec -it "$(PROJECT)"-nginx tail -f /var/log/nginx/error.log

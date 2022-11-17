@@ -5,7 +5,7 @@ networks:
     name: dev-network
 services:
   app:
-    image: cth24/web-dev-php:8.1
+    image: cth24/web-dev-php:${PHP_VERSION}
     container_name: ${PROJECT}-app
     restart: always
     working_dir: /var/www/

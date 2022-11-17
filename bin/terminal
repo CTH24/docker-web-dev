@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+. .env
+
+echo
+echo "http://${PROJECT}.localhost"
+echo
+
+docker exec --interactive --tty --workdir /var/www/ "${PROJECT}"-app /bin/bash
+
+./bin/stop-container

@@ -2,9 +2,8 @@
 
 . .env
 
-cd docker || exit
-cp "${PROJECT_PATH}/.env" "${PROJECT_PATH}"/docker/.env
-docker compose --project-name "${PROJECT}" up -d
-cd ..
+./bin/start-container
+
 docker exec -it "${PROJECT}"-app bash -c "cd /var/www/ && composer create-project symfony/website-skeleton:^5.4 ."
-./start
+
+./bin/terminal

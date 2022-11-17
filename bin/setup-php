@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+. .env
+
+./bin/start-container
+
+mkdir -p src/public
+touch src/public/index.php
+echo "<?php phpinfo();" > src/public/index.php
+
+./bin/terminal

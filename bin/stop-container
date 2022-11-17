@@ -3,14 +3,14 @@
 . .env
 
 echo
-echo "Stop php"
+echo "Stop ${PROJECT} containers"
 docker stop "${PROJECT}"-app
 docker stop "${PROJECT}"-nginx
 docker stop "${PROJECT}"-mysql
 docker stop "${PROJECT}"-redis
 
 echo
-echo "Delete php"
+echo "Delete ${PROJECT} containers"
 docker rm "${PROJECT}"-app
 docker rm "${PROJECT}"-nginx
 docker rm "${PROJECT}"-mysql
