@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+PROJECT_FOLDER="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit ; pwd -P )"
+PROJECT="$(basename "$PROJECT_FOLDER")"
+
+echo 'PROJECT="'"${PROJECT}"'"' > .env
+echo 'PROJECT_PATH="'"${PROJECT_FOLDER}"'"' >> .env
+
+./bin/build-images
+
+clear
+echo
+echo "CTH24 - web-dev-docker"
+echo "----------------------"
+echo
+echo "Project: ${PROJECT}"
+echo "Project folder: ${PROJECT_PATH}"
+echo
+echo "Select System for Development:"q
+echo "1) Symfony"
+echo
+echo "q) Quit"
+echo
+read -r -p "Enter your choice: " choice
+case "$choice" in
+  1) ./bin/setup-symfony ;;
+  q) exit ;;
+  *) echo "invalid" ;;
+esac

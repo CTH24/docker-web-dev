@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+. .env
+
+rm .env
+rm -rf docker/storage
+rm -rf docker/redis
+rm -rf src

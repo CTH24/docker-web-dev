@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+. .env
+
+docker exec --interactive --tty --workdir /var/www/ "${PROJECT}"-app /bin/bash

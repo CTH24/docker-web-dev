@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ ! -f .env ]; then
+  ./setup
+  exit
+fi
+
+. .env
+
+cd docker || exit
+cp "${PROJECT_PATH}/.env" "${PROJECT_PATH}"/docker/.env
+docker compose --project-name "${PROJECT}" up -d
+cd ..
+rm "${PROJECT_PATH}"/docker/.env
+
+echo
+echo "http://${PROJECT}.localhost"
+echo
+
+./terminal
+./stop

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+. .env
+
+echo
+echo "Stop php"
+docker stop "${PROJECT}"-app
+docker stop "${PROJECT}"-nginx
+docker stop "${PROJECT}"-mysql
+docker stop "${PROJECT}"-redis
+
+echo
+echo "Delete php"
+docker rm "${PROJECT}"-app
+docker rm "${PROJECT}"-nginx
+docker rm "${PROJECT}"-mysql
+docker rm "${PROJECT}"-redis
+echo
