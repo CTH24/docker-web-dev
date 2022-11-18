@@ -2,7 +2,7 @@
 
 Dockerfiles for web development
 
-<img width="785" alt="image" src="https://user-images.githubusercontent.com/1764695/202341956-decd12aa-3f9d-45b6-a049-cfb1bdb039a6.png">
+<img width="1008" alt="image" src="https://user-images.githubusercontent.com/1764695/202742960-8af46935-a4ae-4c1b-b833-d5ffb63d101c.png">
 
 
 ## Systems
