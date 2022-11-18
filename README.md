@@ -33,22 +33,12 @@ Dockerfiles for web development
 
 ## Installation
 
-### Full
-```bash
-git clone https://github.com/CTH24/web-dev-docker.git
-cd web-dev-docker
-./bin/build-images
-```
+### Release
 
-### Quick
 ```bash
-mkdir <project>
-cd <project>
-git clone https://github.com/CTH24/web-dev-docker.git --depth 1 .
-rm -rf .git
-./start
+unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.0.0.zip) \
+  && mv web-dev-docker-1.0.0 project-name
 ```
-
 
 ## Commands
 
