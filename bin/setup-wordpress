@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+. .env
+
+./bin/start-container
+
+if [ ! -d "$PROJECT_PATH"/systems/wordpress ]; then
+  mkdir -p "${PROJECT_PATH}"/systems/wordpress
+fi
+
+if [ ! -f "${PROJECT_PATH}"/systems/wordpress/latest.zip ]; then
+  echo "Downloading WordPress..."
+  curl -s -o "${PROJECT_PATH}"/systems/wordpress/latest.zip https://wordpress.org/latest.zip
+fi
+
+## Unzip WordPress
+rm -rf "${PROJECT_PATH}"/src/public
+docker cp "${PROJECT_PATH}"/systems/wordpress/latest.zip "${PROJECT}-app":/var/www/latest.zip
+docker exec -it "${PROJECT}"-app bash -c "cd /var/www \
+  && unzip latest.zip \
+  && mv wordpress public \
+  && rm latest.zip"
+
+## Install WordPress
+cp "${PROJECT_PATH}"/systems/wordpress/wp-config.php "${PROJECT_PATH}"/src/public
+docker exec -it "${PROJECT}"-app bash -c "
+  cd /var/www/public \
+  && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && mv wp-cli.phar wp \
+  && chmod +x wp \
+  && mv wp /usr/local/bin \
+  && wp core install \
+     --allow-root \
+     --url=${PROJECT}.localhost \
+     --title=${PROJECT} \
+     --admin_user=admin \
+     --admin_password=admin \
+     --admin_email=admin@${PROJECT}.localhost"
+
+# wp-completion
+docker exec -it "${PROJECT}"-app bash -c "
+  cd \
+  && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash"
+
+# aliase
+docker exec -it "${PROJECT}"-app bash -c "
+  cd \
+  && echo 'alias ll=\"ls -alF\"' >> .bashrc \
+  && echo 'source /root/wp-completion.bash' >> .bashrc \
+  && echo 'alias wp=\"wp --allow-root\"' >> .bashrc"
+
+# Install Base Plugins
+docker exec -it "${PROJECT}"-app bash -c "
+  cd /var/www/public \
+  && wp plugin install \
+    --activate \
+    --allow-root \
+    query-monitor \
+    display-environment-type"
+
+./bin/terminal

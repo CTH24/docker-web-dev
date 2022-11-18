@@ -4,6 +4,8 @@
 
 ./bin/build-images
 
+mkdir -p "${PROJECT_PATH}"/src/public
+
 clear
 echo
 echo "CTH24 - web-dev-docker"
@@ -14,13 +16,15 @@ echo
 echo "Select System for Development:"
 echo "1) PHP"
 echo "2) Symfony"
+echo "3) WordPress"
 echo
 echo "q) Quit"
 echo
 read -r -p "Enter your choice: " choice
 case "$choice" in
-  1) ./bin/setup-php ;;
-  2) ./bin/setup-symfony ;;
-  q) exit ;;
-  *) echo "invalid" ;;
+1) ./bin/setup-php ;;
+2) ./bin/setup-symfony ;;
+3) ./bin/setup-wordpress ;;
+q) exit ;;
+*) echo "invalid" ;;
 esac

@@ -21,6 +21,10 @@ Dockerfiles for web development
 4. Symfony 6.1 (current)
 5. Symfony 6.2 (dev)
 
+### WordPress
+
+1. Latest Wordpress
+
 ### Stack
 
 1. NGINX

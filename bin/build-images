@@ -1,21 +1,27 @@
 #!/usr/bin/env bash
 
 . .env
+
+NOCACHE=""
+if [ "$1" = "--no-cache" ]; then
+  NOCACHE="--no-cache"
+fi
+
 cd "${PROJECT_PATH}"/docker || exit
 cp "${PROJECT_PATH}"/docker/Dockerfiles/php7.4/Dockerfile "${PROJECT_PATH}"/docker/Dockerfile
-docker build -t "cth24/web-dev-php:7.4" .
+docker build ${NOCACHE} -t "cth24/web-dev-php:7.4" .
 rm "${PROJECT_PATH}"/docker/Dockerfile
 
 cp "${PROJECT_PATH}"/docker/Dockerfiles/php8.0/Dockerfile "${PROJECT_PATH}"/docker/Dockerfile
-docker build -t "cth24/web-dev-php:8.0" .
+docker build ${NOCACHE} -t "cth24/web-dev-php:8.0" .
 rm "${PROJECT_PATH}"/docker/Dockerfile
 
 cp "${PROJECT_PATH}"/docker/Dockerfiles/php8.1/Dockerfile "${PROJECT_PATH}"/docker/Dockerfile
-docker build -t "cth24/web-dev-php:8.1" .
+docker build ${NOCACHE} -t "cth24/web-dev-php:8.1" .
 rm "${PROJECT_PATH}"/docker/Dockerfile
 
 cp "${PROJECT_PATH}"/docker/Dockerfiles/php8.2/Dockerfile "${PROJECT_PATH}"/docker/Dockerfile
-docker build -t "cth24/web-dev-php:8.2" .
+docker build ${NOCACHE} -t "cth24/web-dev-php:8.2" .
 rm "${PROJECT_PATH}"/docker/Dockerfile
 
 cd "${PROJECT_PATH}" || exit

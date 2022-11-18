@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
+PHP_VERSION="8.0"
+
 if [ ! -f .env ]; then
   PROJECT_PATH="$(
     cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit
     pwd -P
   )"
+
   PROJECT="$(basename "$PROJECT_PATH")"
-  PHP_VERSION="8.1"
+
   echo 'PROJECT="'"${PROJECT}"'"' >.env
   echo 'PROJECT_PATH="'"${PROJECT_PATH}"'"' >>.env
   echo 'PHP_VERSION="'"${PHP_VERSION}"'"' >>.env
+
   ./bin/setup
 else
   . .env

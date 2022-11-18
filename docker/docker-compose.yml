@@ -10,7 +10,7 @@ services:
     restart: always
     working_dir: /var/www/
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "${PROJECT}.localhost:host-gateway"
     volumes:
       - ../src/:/var/www/
       - ../backup/:/opt/backup/
@@ -29,6 +29,8 @@ services:
       - ./nginx:/etc/nginx/conf.d
     networks:
         - dev-network
+    extra_hosts:
+      - "${PROJECT}.localhost:host-gateway"
   db:
     image: mariadb:latest
     container_name: ${PROJECT}-mysql

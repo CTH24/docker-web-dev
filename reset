@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-. .env
+if [ -f .env ]; then
+  . .env
+fi
 
-rm .env
+./bin/stop-container
+
+rm -f .env
 rm -rf docker/storage
 rm -rf docker/redis
 rm -rf src

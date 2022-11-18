@@ -7,7 +7,6 @@ echo "CTH24 - web-dev-docker"
 echo "----------------------"
 echo
 echo "Project: ${PROJECT}"
-echo "Project folder: ${PROJECT_FOLDER}"
 echo
 echo "Select Symfony Version"
 echo "1) Symfony 4.4 LTS"

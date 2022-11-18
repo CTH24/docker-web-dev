@@ -2,6 +2,7 @@ FROM php:8.2.0RC6-fpm
 
 RUN apt-get update && apt-get install -y \
     curl \
+    default-mysql-client \
     ghostscript \
     git \
     iputils-ping \
@@ -16,8 +17,8 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     libzip-dev \
     libwebp-dev \
-    default-mysql-client \
     unzip \
+    wget \
     zip
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp\
