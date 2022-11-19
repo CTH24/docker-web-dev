@@ -2,10 +2,12 @@
 
 . .env
 
+echo 'PROJECT_TYPE="PHP (blank)"' >>.env
+
+./bin/select-php-version
 ./bin/start-container
 
-mkdir -p src/public
 touch src/public/index.php
 echo "<?php phpinfo();" > src/public/index.php
 
-./bin/terminal
+./bin/control

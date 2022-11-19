@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+./bin/select-typo3-version
+
+. .env
+
+echo 'PROJECT_TYPE="TYPO3 v'"${TYPO3_VERSION}"'"' >>.env
+
+./bin/start-container
+
+rm -rf "${PROJECT_PATH}"/src/public
+
+docker exec -it "${PROJECT}"-app bash -c "
+  composer create-project typo3/cms-base-distribution:^${TYPO3_VERSION} /var/www/"
+
+docker exec -it "${PROJECT}"-app bash -c "
+  cd /var/www \
+  && vendor/bin/typo3cms install:setup \
+      --no-interaction \
+      --database-user-name website \
+      --database-user-password website \
+      --database-host-name db \
+      --database-port 3306 \
+      --database-name website \
+      --use-existing-database \
+      --admin-user-name admin \
+      --admin-password admin235 \
+      --site-setup-type site"
+
+docker exec -it "${PROJECT}"-app bash -c "
+  cd \
+  && echo 'alias ll=\"ls -alF\"' >> .bashrc"
+
+./bin/control

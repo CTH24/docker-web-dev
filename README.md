@@ -1,6 +1,6 @@
 # web-dev-docker
 
-Dockerfiles for web development
+Docker based environments for web development.
 
 <img width="785" alt="image" src="https://user-images.githubusercontent.com/1764695/202341956-decd12aa-3f9d-45b6-a049-cfb1bdb039a6.png">
 
@@ -15,11 +15,20 @@ Dockerfiles for web development
 4. PHP 8.2 RC6
 
 ### Symfony
+
 1. Symfony 4.4 LTS
 2. Symfony 5.4 LTS
 3. Symfony 6.0
 4. Symfony 6.1 (current)
 5. Symfony 6.2 (dev)
+
+### TYPO3
+
+1. TYPO3 v8
+2. TYPO3 v9
+3. TYPO3 v10
+4. TYPO3 v11
+5. TYPO3 v12
 
 ### WordPress
 

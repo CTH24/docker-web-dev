@@ -1,29 +1,19 @@
 #!/usr/bin/env bash
 
+./bin/select-symfony-version
+
 . .env
 
-echo
-echo "CTH24 - web-dev-docker"
-echo "----------------------"
-echo
-echo "Project: ${PROJECT}"
-echo
-echo "Select Symfony Version"
-echo "1) Symfony 4.4 LTS"
-echo "2) Symfony 5.4 LTS (recommended)"
-echo "3) Symfony 6.0"
-echo "4) Symfony 6.1 (current)"
-echo "5) Symfony 6.2 (dev)"
-echo
-echo "q) Quit"
-echo
-read -r -p "Enter your choice: " choice
-case "$choice" in
-  1) ./bin/setup-symfony-4.4 ;;
-  2) ./bin/setup-symfony-5.4 ;;
-  3) ./bin/setup-symfony-6.0 ;;
-  4) ./bin/setup-symfony-6.1 ;;
-  5) ./bin/setup-symfony-6.2 ;;
-  q) exit ;;
-  *) echo "invalid" ;;
-esac
+./bin/start-container
+
+echo 'PROJECT_TYPE="Symfony '"${SYMFONY_VERSION}"'"' >>.env
+
+docker exec -it "${PROJECT}"-app bash -c "rm -rf /var/www/public"
+
+if [ "${SYMFONY_VERSION}" = "6.2" ]; then
+  docker exec -it "${PROJECT}"-app bash -c "cd /var/www/ && composer create-project symfony/website-skeleton:6.2.*@dev ."
+else
+  docker exec -it "${PROJECT}"-app bash -c "cd /var/www/ && composer create-project symfony/website-skeleton:^${SYMFONY_VERSION} ."
+fi
+
+./bin/control

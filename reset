@@ -2,11 +2,10 @@
 
 if [ -f .env ]; then
   . .env
+  ./bin/stop-container
+  sed -i '' "s/$PROJECT/PROJECT/g" "${PROJECT_PATH}"/docker/nginx/nginx.conf
+  rm -f .env
+  rm -rf docker/storage
+  rm -rf docker/redis
+  rm -rf src
 fi
-
-./bin/stop-container
-
-rm -f .env
-rm -rf docker/storage
-rm -rf docker/redis
-rm -rf src

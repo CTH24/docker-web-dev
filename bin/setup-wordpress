@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo 'PROJECT_TYPE="WordPress"' >>.env
+echo 'PHP_VERSION="8.0"' >>.env
+
 . .env
 
 ./bin/start-container
@@ -21,7 +24,7 @@ docker exec -it "${PROJECT}"-app bash -c "cd /var/www \
   && mv wordpress public \
   && rm latest.zip"
 
-## Install WordPress
+## Install WP-CLI
 cp "${PROJECT_PATH}"/systems/wordpress/wp-config.php "${PROJECT_PATH}"/src/public
 docker exec -it "${PROJECT}"-app bash -c "
   cd /var/www/public \
@@ -29,25 +32,25 @@ docker exec -it "${PROJECT}"-app bash -c "
   && mv wp-cli.phar wp \
   && chmod +x wp \
   && mv wp /usr/local/bin \
+  && echo 'alias wp=\"wp --allow-root\"' >> .bashrc \
+  && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash \
+  && echo 'source /root/wp-completion.bash' >> .bashrc"
+
+## Install WordPress
+docker exec -it "${PROJECT}"-app bash -c "
   && wp core install \
      --allow-root \
      --url=${PROJECT}.localhost \
      --title=${PROJECT} \
      --admin_user=admin \
-     --admin_password=admin \
+     --admin_password=admin235 \
      --admin_email=admin@${PROJECT}.localhost"
 
 # wp-completion
 docker exec -it "${PROJECT}"-app bash -c "
   cd \
-  && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash"
 
-# aliase
-docker exec -it "${PROJECT}"-app bash -c "
-  cd \
-  && echo 'alias ll=\"ls -alF\"' >> .bashrc \
-  && echo 'source /root/wp-completion.bash' >> .bashrc \
-  && echo 'alias wp=\"wp --allow-root\"' >> .bashrc"
+
 
 # Install Base Plugins
 docker exec -it "${PROJECT}"-app bash -c "
@@ -58,4 +61,4 @@ docker exec -it "${PROJECT}"-app bash -c "
     query-monitor \
     display-environment-type"
 
-./bin/terminal
+./bin/control

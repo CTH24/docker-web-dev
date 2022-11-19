@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+. .env
+
+.bin/header
+
+echo "Select Symfony Version"
+echo "1) Symfony 4.4 LTS"
+echo "2) Symfony 5.4 LTS (recommended)"
+echo "3) Symfony 6.0"
+echo "4) Symfony 6.1 (current)"
+echo "5) Symfony 6.2 (dev)"
+echo
+echo "q) Quit"
+echo
+read -r -p "Enter your choice: " choice
+case "$choice" in
+1)
+  SYMFONY_VERSION="4.4"
+  PHP_VERSION="7.4"
+  ;;
+2)
+  SYMFONY_VERSION="5.4"
+  PHP_VERSION="7.4"
+  ;;
+3)
+  SYMFONY_VERSION="6.0"
+  PHP_VERSION="8.0"
+  ;;
+4)
+  SYMFONY_VERSION="6.1"
+  PHP_VERSION="8.1"
+  ;;
+5)
+  SYMFONY_VERSION="6.2"
+  PHP_VERSION="8.1"
+  ;;
+q) exit ;;
+*) echo "invalid" ;;
+esac
+
+echo 'SYMFONY_VERSION="'"${SYMFONY_VERSION}"'"' >>.env
+echo 'PHP_VERSION="'"${PHP_VERSION}"'"' >>.env

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+. .env
+
+center() {
+  [[ -t 1 ]] && wid=$(tput cols) || wid=80
+  printf "%$(((wid + ${#1}) / 2))s\n" "$1"
+}
+
+./bin/header
+
+center "http://${PROJECT}.localhost"
+
+if [ "${PROJECT_TYPE}" = "WordPress" ]; then
+  center "http://${PROJECT}.localhost/wp-admin (admin/admin235)"
+fi
+
+if [[ "${PROJECT_TYPE}" == *"TYPO3"* ]]; then
+  center "TYPO3 v$TYPO3_VERSION"
+  center "http://${PROJECT}.localhost/typo3 (admin/admin235)"
+fi
+
+echo
+echo
+echo "READY."
+echo
+
+PS3='Action: '
+systems=("Terminal" "Change PHP Version" "neovim" "phpstorm" "code" "browser" "Quit")
+select opt in "${systems[@]}"; do
+  case $opt in
+  "Terminal") echo && ./bin/terminal && ./bin/control && break ;;
+  "Change PHP Version") ./bin/change-php-version && ./bin/control && break ;;
+  "neovim" ) nvim . && ./bin/control && break ;;
+  "phpstorm" ) phpstorm . && ./bin/control && break ;;
+  "code" ) code . && ./bin/control && break ;;
+  "browser") open "http://${PROJECT}.localhost" && ./bin/control && break ;;
+  "Quit") clear && break ;;
+  *) echo "Invalid option $REPLY" ;;
+  esac
+done

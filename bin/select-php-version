@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+. .env
+
+./bin/header
+
+PS3='Please select PHP Version: '
+systems=("PHP 7.4" "PHP 8.0" "PHP 8.1" "PHP 8.2" "Quit")
+select opt in "${systems[@]}"; do
+  case $opt in
+  "PHP 7.4") PHP_VERSION=7.4 && break;;
+  "PHP 8.0") PHP_VERSION=8.0 && break;;
+  "PHP 8.1") PHP_VERSION=8.1 && break;;
+  "PHP 8.2") PHP_VERSION=8.2 && break;;
+  "Quit") clear && break ;;
+  *) echo "Invalid option $REPLY" ;;
+  esac
+done
+
+echo 'PHP_VERSION="'"${PHP_VERSION}"'"' >>.env

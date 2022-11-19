@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+. .env
+
+./bin/header
+
+# Select System
+PS3='Please select system: '
+systems=("PHP (blank)" "Symfony" "TYPO3" "WordPress" "Quit")
+select opt in "${systems[@]}"; do
+  case $opt in
+  "PHP (blank)") ./bin/setup-php && break ;;
+  "Symfony") ./bin/setup-symfony && break ;;
+  "TYPO3") ./bin/setup-typo3 && break ;;
+  "WordPress") ./bin/setup-wordpress && break ;;
+  "Quit") clear && break ;;
+  *) echo "Invalid option $REPLY" ;;
+  esac
+done

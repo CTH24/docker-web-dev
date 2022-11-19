@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+. .env
+
+center() {
+  [[ -t 1 ]] && wid=$(tput cols) || wid=80
+  printf "%$(((wid + ${#1}) / 2))s\n" "$1"
+}
+
+clear
+echo
+center "**** CTH24 WEBDEV V1 ****"
+echo
+center "Project: ${PROJECT}"
+echo
