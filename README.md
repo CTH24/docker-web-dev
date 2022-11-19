@@ -2,7 +2,7 @@
 
 Docker based environments for web development.
 
-<img width="1008" alt="image" src="https://user-images.githubusercontent.com/1764695/202742960-8af46935-a4ae-4c1b-b833-d5ffb63d101c.png">
+<img width="1214" alt="image" src="https://user-images.githubusercontent.com/1764695/202864412-f10c628c-00fb-4484-8059-7a577a54ebac.png">
 
 ## Systems
 
