@@ -2,7 +2,7 @@
 
 Docker based environments for web development.
 
-<img width="785" alt="image" src="https://user-images.githubusercontent.com/1764695/202341956-decd12aa-3f9d-45b6-a049-cfb1bdb039a6.png">
+<img width="1008" alt="image" src="https://user-images.githubusercontent.com/1764695/202742960-8af46935-a4ae-4c1b-b833-d5ffb63d101c.png">
 
 
 ## Systems
@@ -42,22 +42,12 @@ Docker based environments for web development.
 
 ## Installation
 
-### Full
-```bash
-git clone https://github.com/CTH24/web-dev-docker.git
-cd web-dev-docker
-./bin/build-images
-```
+### Release
 
-### Quick
 ```bash
-mkdir <project>
-cd <project>
-git clone https://github.com/CTH24/web-dev-docker.git --depth 1 .
-rm -rf .git
-./start
+unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.0.0.zip) \
+  && mv web-dev-docker-1.0.0 project-name
 ```
-
 
 ## Commands
 
