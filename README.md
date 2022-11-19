@@ -4,6 +4,35 @@ Docker based environments for web development.
 
 <img width="1214" alt="image" src="https://user-images.githubusercontent.com/1764695/202864412-f10c628c-00fb-4484-8059-7a577a54ebac.png">
 
+## Installation
+
+### Release
+
+```bash
+unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.1.0.zip) \
+  && mv web-dev-docker-1.1.0 project-name
+```
+## Commands
+
+```bash
+./start
+```
+
+Complete system reset. All Files and Databases will be deleted.
+
+```bash
+./reset
+```
+
+## MySQL
+
+```
+HOST: db
+DATABASE: website
+USER: website
+PASS: website
+```
+
 ## Systems
 
 ### PHP
@@ -38,33 +67,3 @@ Docker based environments for web development.
 2. MariaDB
 3. Redis
 4. xDebug
-
-## Installation
-
-### Release
-
-```bash
-unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.1.0.zip) \
-  && mv web-dev-docker-1.1.0 project-name
-```
-
-## Commands
-
-```bash
-./start
-```
-
-Complete system reset. All Files and Databases will be deleted.
-
-```bash
-./reset
-```
-
-## MySQL
-
-```
-HOST: db
-DATABASE: website
-USER: website
-PASS: website
-```
