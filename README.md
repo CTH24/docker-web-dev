@@ -67,3 +67,8 @@ PASS: website
 2. MariaDB
 3. Redis
 4. xDebug
+
+## Actions
+
+<img width="1216" alt="image" src="https://user-images.githubusercontent.com/1764695/202864651-3549c4d2-1f38-41d6-98d6-692c455b4f27.png">
+
