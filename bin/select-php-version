@@ -4,7 +4,8 @@
 
 ./bin/header
 
-PS3='Please select PHP Version: '
+PS3='
+Please select PHP Version: '
 systems=("PHP 7.4" "PHP 8.0" "PHP 8.1" "PHP 8.2" "Quit")
 select opt in "${systems[@]}"; do
   case $opt in

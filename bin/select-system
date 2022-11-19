@@ -5,7 +5,8 @@
 ./bin/header
 
 # Select System
-PS3='Please select system: '
+PS3="
+Please select system: "
 systems=("PHP (blank)" "Symfony" "TYPO3" "WordPress" "Quit")
 select opt in "${systems[@]}"; do
   case $opt in

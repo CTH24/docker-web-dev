@@ -9,20 +9,25 @@ center() {
 
 ./bin/header
 
-echo
-center "http://${PROJECT}.localhost"
-echo
+if [[ "${PROJECT_TYPE}" == *"PHP"* ]]; then
+  center "PHP (blank)"
+  center "http://${PROJECT}.localhost"
+fi
 
 if [[ "${PROJECT_TYPE}" == *"Symfony"* ]]; then
   center "Symfony Version: ${SYMFONY_VERSION}"
+  center "http://${PROJECT}.localhost"
 fi
 
 if [[ "${PROJECT_TYPE}" == *"TYPO3"* ]]; then
   center "TYPO3 v$TYPO3_VERSION"
+  center "http://${PROJECT}.localhost"
   center "http://${PROJECT}.localhost/typo3 (admin/admin235)"
 fi
 
 if [ "${PROJECT_TYPE}" = "WordPress" ]; then
+  center "WordPress"
+  center "http://${PROJECT}.localhost"
   center "http://${PROJECT}.localhost/wp-admin (admin/admin235)"
 fi
 

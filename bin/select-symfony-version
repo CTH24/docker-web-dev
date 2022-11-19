@@ -13,7 +13,7 @@ echo "5) Symfony 6.2 (dev)"
 echo
 echo "q) Quit"
 echo
-read -r -p "Enter your choice: " choice
+read -r -p "Please select version: " choice
 case "$choice" in
 1)
   SYMFONY_VERSION="4.4"

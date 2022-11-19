@@ -12,7 +12,7 @@ echo "4) TYPO3 v12 (no auto-install)"
 echo
 echo "q) Quit"
 echo
-read -r -p "Enter your choice: " choice
+read -r -p "Please select version: " choice
 case "$choice" in
 1)
   TYPO3_VERSION=9
