@@ -5,7 +5,7 @@
 clear
 
 # Build Images
-./bin/build-images
+#./bin/build-images
 
 # Configure NGINX
 sed -i '' "s/PROJECT/$PROJECT/g" "${PROJECT_PATH}"/docker/nginx/nginx.conf

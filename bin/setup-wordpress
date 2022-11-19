@@ -26,18 +26,17 @@ docker exec -it "${PROJECT}"-app bash -c "cd /var/www \
 
 ## Install WP-CLI
 cp "${PROJECT_PATH}"/systems/wordpress/wp-config.php "${PROJECT_PATH}"/src/public
-docker exec -it "${PROJECT}"-app bash -c "
-  cd /var/www/public \
+docker exec -it "${PROJECT}"-app bash -c "cd /var/www/public \
   && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && mv wp-cli.phar wp \
   && chmod +x wp \
   && mv wp /usr/local/bin \
-  && echo 'alias wp=\"wp --allow-root\"' >> .bashrc \
+  && echo 'alias wp=\"wp --allow-root\"' >> /root/.bashrc \
   && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash \
-  && echo 'source /root/wp-completion.bash' >> .bashrc"
+  && echo 'source /root/wp-completion.bash' >> /root/.bashrc"
 
 ## Install WordPress
-docker exec -it "${PROJECT}"-app bash -c "
+docker exec -it "${PROJECT}"-app bash -c "cd /var/www/public \
   && wp core install \
      --allow-root \
      --url=${PROJECT}.localhost \
@@ -46,19 +45,14 @@ docker exec -it "${PROJECT}"-app bash -c "
      --admin_password=admin235 \
      --admin_email=admin@${PROJECT}.localhost"
 
-# wp-completion
-docker exec -it "${PROJECT}"-app bash -c "
-  cd \
-
-
-
 # Install Base Plugins
-docker exec -it "${PROJECT}"-app bash -c "
-  cd /var/www/public \
+docker exec -it "${PROJECT}"-app bash -c "cd /var/www/public \
   && wp plugin install \
     --activate \
     --allow-root \
     query-monitor \
     display-environment-type"
+
+
 
 ./bin/control

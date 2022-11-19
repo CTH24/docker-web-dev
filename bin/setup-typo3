@@ -27,8 +27,4 @@ docker exec -it "${PROJECT}"-app bash -c "
       --admin-password admin235 \
       --site-setup-type site"
 
-docker exec -it "${PROJECT}"-app bash -c "
-  cd \
-  && echo 'alias ll=\"ls -alF\"' >> .bashrc"
-
 ./bin/control

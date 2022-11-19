@@ -9,10 +9,12 @@ center() {
 
 ./bin/header
 
+echo
 center "http://${PROJECT}.localhost"
+echo
 
-if [ "${PROJECT_TYPE}" = "WordPress" ]; then
-  center "http://${PROJECT}.localhost/wp-admin (admin/admin235)"
+if [[ "${PROJECT_TYPE}" == *"Symfony"* ]]; then
+  center "Symfony Version: ${SYMFONY_VERSION}"
 fi
 
 if [[ "${PROJECT_TYPE}" == *"TYPO3"* ]]; then
@@ -20,7 +22,12 @@ if [[ "${PROJECT_TYPE}" == *"TYPO3"* ]]; then
   center "http://${PROJECT}.localhost/typo3 (admin/admin235)"
 fi
 
+if [ "${PROJECT_TYPE}" = "WordPress" ]; then
+  center "http://${PROJECT}.localhost/wp-admin (admin/admin235)"
+fi
+
 echo
+center "PHP Version: ${PHP_VERSION}"
 echo
 echo "READY."
 echo
@@ -31,9 +38,9 @@ select opt in "${systems[@]}"; do
   case $opt in
   "Terminal") echo && ./bin/terminal && ./bin/control && break ;;
   "Change PHP Version") ./bin/change-php-version && ./bin/control && break ;;
-  "neovim" ) nvim . && ./bin/control && break ;;
-  "phpstorm" ) phpstorm . && ./bin/control && break ;;
-  "code" ) code . && ./bin/control && break ;;
+  "neovim") nvim . && ./bin/control && break ;;
+  "phpstorm") phpstorm . && ./bin/control && break ;;
+  "code") code . && ./bin/control && break ;;
   "browser") open "http://${PROJECT}.localhost" && ./bin/control && break ;;
   "Quit") clear && break ;;
   *) echo "Invalid option $REPLY" ;;

@@ -4,7 +4,6 @@ Docker based environments for web development.
 
 <img width="1008" alt="image" src="https://user-images.githubusercontent.com/1764695/202742960-8af46935-a4ae-4c1b-b833-d5ffb63d101c.png">
 
-
 ## Systems
 
 ### PHP
@@ -24,21 +23,21 @@ Docker based environments for web development.
 
 ### TYPO3
 
-1. TYPO3 v8
-2. TYPO3 v9
-3. TYPO3 v10
-4. TYPO3 v11
-5. TYPO3 v12
+1. TYPO3 v9
+2. TYPO3 v10
+3. TYPO3 v11
+4. TYPO3 v12 (no auto-install yet)
 
 ### WordPress
 
-1. Latest Wordpress
+1. Wordpress (current)
 
 ### Stack
 
 1. NGINX
 2. MariaDB
 3. Redis
+4. xDebug
 
 ## Installation
 
@@ -53,5 +52,19 @@ unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.0
 
 ```bash
 ./start
+```
+
+Complete system reset. All Files and Databases will be deleted.
+
+```bash
 ./reset
+```
+
+## MySQL
+
+```
+HOST: db
+DATABASE: website
+USER: website
+PASS: website
 ```

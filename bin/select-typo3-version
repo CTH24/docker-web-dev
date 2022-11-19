@@ -5,30 +5,29 @@
 ./bin/header
 
 echo "Select TYPO3 Version"
-echo "1) TYPO3 v8"
-echo "2) TYPO3 v9"
-echo "3) TYPO3 v10"
-echo "4) TYPO3 v11 (recommended)"
-echo "5) TYPO3 v12"
+echo "1) TYPO3 v9"
+echo "2) TYPO3 v10"
+echo "3) TYPO3 v11 (recommended)"
+echo "4) TYPO3 v12 (no auto-install)"
 echo
 echo "q) Quit"
 echo
 read -r -p "Enter your choice: " choice
 case "$choice" in
 1)
-  TYPO3_VERSION=8
+  TYPO3_VERSION=9
   PHP_VERSION="7.4"
   ;;
-2) TYPO3_VERSION=9
+2)
+  TYPO3_VERSION=10
   PHP_VERSION="7.4"
   ;;
-3) TYPO3_VERSION=10
-  PHP_VERSION="7.4"
-  ;;
-4) TYPO3_VERSION=11
+3)
+  TYPO3_VERSION=11
   PHP_VERSION="8.1"
   ;;
-5) TYPO3_VERSION=12
+4)
+  TYPO3_VERSION=12
   PHP_VERSION="8.1"
   ;;
 q) exit ;;

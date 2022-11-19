@@ -12,7 +12,7 @@ if [ "${PROJECT_TYPE}" = "WordPress" ]; then
   && mv wp-cli.phar wp \
   && chmod +x wp \
   && mv wp /usr/local/bin \
-  && echo 'alias wp=\"wp --allow-root\"' >> .bashrc \
+  && echo 'alias wp=\"wp --allow-root\"' >> /root/.bashrc \
   && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash \
-  && echo 'source /root/wp-completion.bash' >> .bashrc"
+  && echo 'source /root/wp-completion.bash' >> /root/.bashrc"
 fi

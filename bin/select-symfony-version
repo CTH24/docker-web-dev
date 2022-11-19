@@ -2,7 +2,7 @@
 
 . .env
 
-.bin/header
+./bin/header
 
 echo "Select Symfony Version"
 echo "1) Symfony 4.4 LTS"
