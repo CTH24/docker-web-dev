@@ -43,7 +43,7 @@ select opt in "${systems[@]}"; do
   case $opt in
   "Terminal") echo && ./bin/terminal && ./bin/control && break ;;
   "Change PHP Version") ./bin/change-php-version && ./bin/control && break ;;
-  "neovim") nvim . && ./bin/control && break ;;
+  "neovim") nvim ./src/public/index.php && ./bin/control && break ;;
   "phpstorm") phpstorm . && ./bin/control && break ;;
   "code") code . && ./bin/control && break ;;
   "browser") open "http://${PROJECT}.localhost" && ./bin/control && break ;;
