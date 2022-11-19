@@ -44,8 +44,8 @@ Docker based environments for web development.
 ### Release
 
 ```bash
-unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.0.0.zip) \
-  && mv web-dev-docker-1.0.0 project-name
+unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.1.0.zip) \
+  && mv web-dev-docker-1.1.0 project-name
 ```
 
 ## Commands
