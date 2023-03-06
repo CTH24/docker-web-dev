@@ -17,7 +17,7 @@ docker exec -it "${PROJECT}"-app bash -c "
   chown -R www-data:www-data /var/www/"
 
 docker exec -it "${PROJECT}"-app bash -c "
-  chmod g+s /var/www"
+  chmod g+sw /var/www"
 
 docker exec -it "${PROJECT}"-app bash -c "
   cd /var/www \
@@ -38,5 +38,8 @@ docker exec -it "${PROJECT}"-app /bin/bash -c "
     && sed -i \"/'SYS' => \[/a \ \ \ \ 'trustedHostsPattern' => '.*\\.localhost',\" \"LocalConfiguration.php\"
 "
 
+docker exec -it "${PROJECT}"-vscode /bin/bash -c "
+    sudo chown -R coder:www-data /workspace
+"
 
 ./bin/control

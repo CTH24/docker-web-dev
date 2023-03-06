@@ -53,6 +53,9 @@ docker exec -it "${PROJECT}"-app bash -c "cd /var/www/public \
     query-monitor \
     display-environment-type"
 
+docker exec -it "${PROJECT}"-vscode /bin/bash -c "
+    sudo chown -R coder:www-data /workspace
+"
 
 
 ./bin/control

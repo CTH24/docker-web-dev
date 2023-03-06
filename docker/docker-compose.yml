@@ -18,6 +18,21 @@ services:
       dev-network:
         aliases:
           - ${PROJECT}.localhost
+  vscode:
+    image: cth24/vscode:1.0
+    container_name: ${PROJECT}-vscode
+    ports:
+      - "8080:8080"
+    environment:
+      - PASSWORD=pass
+    volumes:
+      - ../src:/workspace
+      - ../config/vscode/settings.json:/root/.local/share/code-server/User/settings.json
+      - ../config/vscode/keybindings.json:/root/.local/share/code-server/User/keybindings.json
+    networks:
+        - dev-network
+    depends_on:
+      - app
   nginx:
     image: nginx:latest
     container_name: ${PROJECT}-nginx

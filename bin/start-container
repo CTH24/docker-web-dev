@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 . .env
-clear
 cd docker || exit
 cp "${PROJECT_PATH}/.env" "${PROJECT_PATH}"/docker/.env
 docker compose --project-name "${PROJECT}" up -d
 cd ..
-clear

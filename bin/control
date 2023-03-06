@@ -8,6 +8,10 @@ center() {
 }
 
 ./bin/header
+echo 
+center "IDE"
+center "http://${PROJECT}.localhost:8080"
+echo
 
 if [[ "${PROJECT_TYPE}" == *"PHP"* ]]; then
   center "PHP (blank)"

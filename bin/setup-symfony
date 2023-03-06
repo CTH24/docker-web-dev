@@ -16,4 +16,8 @@ else
   docker exec -it "${PROJECT}"-app bash -c "cd /var/www/ && composer create-project symfony/website-skeleton:^${SYMFONY_VERSION} ."
 fi
 
+docker exec -it "${PROJECT}"-vscode /bin/bash -c "
+    sudo chown -R coder:www-data /workspace
+"
+
 ./bin/control

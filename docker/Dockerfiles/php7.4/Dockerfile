@@ -36,9 +36,9 @@ RUN docker-php-ext-install opcache
 COPY ./php/opcache.ini "${PHP_INI_DIR}/conf.d/opcache.ini"
 
 COPY ./php/xdebug.ini "${PHP_INI_DIR}/conf.d/xdebug.ini"
-RUN pecl install \
-    xdebug \
-    && docker-php-ext-enable xdebug
+#RUN pecl install \
+#    xdebug \
+#    && docker-php-ext-enable xdebug
 
 RUN pecl install \
     imagick \
@@ -50,8 +50,6 @@ RUN pecl install redis \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apt-get install -y npm
-
-RUN adduser --system --group www-data
 
 COPY ./bash/.bashrc "/root/.bashrc"
 

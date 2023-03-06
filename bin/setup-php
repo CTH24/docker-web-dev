@@ -10,4 +10,7 @@ echo 'PROJECT_TYPE="PHP (blank)"' >>.env
 touch src/public/index.php
 echo "<?php phpinfo();" > src/public/index.php
 
+docker exec -it "${PROJECT}"-vscode /bin/bash -c "
+    sudo chown -R coder:www-data /workspace
+"
 ./bin/control

@@ -23,6 +23,14 @@ if docker inspect -f '{{.State.Running}}' "${PROJECT}"-redis &>/dev/null; then
   docker stop "${PROJECT}"-redis
 fi
 
+if docker inspect -f '{{.State.Running}}' "${PROJECT}"-vscode &>/dev/null; then
+  docker stop "${PROJECT}"-vscode
+fi
+
+
+
+
+
 if docker inspect "${PROJECT}"-app &>/dev/null; then
   echo
   echo "Delete ${PROJECT} containers:"
@@ -40,6 +48,10 @@ fi
 
 if docker inspect "${PROJECT}"-redis &>/dev/null; then
   docker rm "${PROJECT}"-redis
+fi
+
+if docker inspect "${PROJECT}"-vscode &>/dev/null; then
+  docker rm "${PROJECT}"-vscode
 fi
 
 clear

@@ -24,4 +24,8 @@ cp "${PROJECT_PATH}"/docker/Dockerfiles/php8.2/Dockerfile "${PROJECT_PATH}"/dock
 docker build ${NOCACHE} -t "cth24/web-dev-php:8.2" .
 rm "${PROJECT_PATH}"/docker/Dockerfile
 
+cp "${PROJECT_PATH}"/docker/Dockerfiles/vscode/Dockerfile "${PROJECT_PATH}"/docker/Dockerfile
+docker build ${NOCACHE} -t "cth24/vscode:1.0" .
+rm "${PROJECT_PATH}"/docker/Dockerfile
+
 cd "${PROJECT_PATH}" || exit
