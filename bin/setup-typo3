@@ -14,6 +14,12 @@ docker exec -it "${PROJECT}"-app bash -c "
   composer create-project typo3/cms-base-distribution:^${TYPO3_VERSION} /var/www/"
 
 docker exec -it "${PROJECT}"-app bash -c "
+  chown -R www-data:www-data /var/www/"
+
+docker exec -it "${PROJECT}"-app bash -c "
+  chmod g+s /var/www"
+
+docker exec -it "${PROJECT}"-app bash -c "
   cd /var/www \
   && vendor/bin/typo3cms install:setup \
       --no-interaction \
@@ -26,5 +32,11 @@ docker exec -it "${PROJECT}"-app bash -c "
       --admin-user-name admin \
       --admin-password admin235 \
       --site-setup-type site"
+
+docker exec -it "${PROJECT}"-app /bin/bash -c "
+    cd /var/www/public/typo3conf \
+    && sed -i \"/'SYS' => \[/a \ \ \ \ 'trustedHostsPattern' => '.*\\.localhost',\" \"LocalConfiguration.php\"
+"
+
 
 ./bin/control

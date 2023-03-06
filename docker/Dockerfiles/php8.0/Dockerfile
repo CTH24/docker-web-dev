@@ -51,6 +51,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN apt-get install -y npm
 
+RUN adduser --system --group www-data
+
 COPY ./bash/.bashrc "/root/.bashrc"
 
 WORKDIR /var/www
