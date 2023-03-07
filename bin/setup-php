@@ -5,12 +5,17 @@
 echo 'PROJECT_TYPE="PHP (blank)"' >>.env
 
 ./bin/select-php-version
-./bin/start-container
+
+./bin/container-start
 
 touch src/public/index.php
-echo "<?php phpinfo();" > src/public/index.php
+echo "<?php phpinfo();" >src/public/index.php
 
 docker exec -it "${PROJECT}"-vscode /bin/bash -c "
-    sudo chown -R coder:www-data /workspace
+  chown -R www-data:www-data /workspace
 "
+docker exec -it "${PROJECT}"-app bash -c "
+  chmod g+sw /var/www
+"
+
 ./bin/control

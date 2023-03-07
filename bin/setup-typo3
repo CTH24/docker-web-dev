@@ -6,18 +6,19 @@
 
 echo 'PROJECT_TYPE="TYPO3 v'"${TYPO3_VERSION}"'"' >>.env
 
-./bin/start-container
+./bin/container-start
 
 rm -rf "${PROJECT_PATH}"/src/public
 
 docker exec -it "${PROJECT}"-app bash -c "
   composer create-project typo3/cms-base-distribution:^${TYPO3_VERSION} /var/www/"
 
+docker exec -it "${PROJECT}"-vscode /bin/bash -c "
+  sudo chown -R www-data:www-data /workspace
+"
 docker exec -it "${PROJECT}"-app bash -c "
-  chown -R www-data:www-data /var/www/"
-
-docker exec -it "${PROJECT}"-app bash -c "
-  chmod g+sw /var/www"
+  chmod g+sw /var/www
+"
 
 docker exec -it "${PROJECT}"-app bash -c "
   cd /var/www \
@@ -39,7 +40,10 @@ docker exec -it "${PROJECT}"-app /bin/bash -c "
 "
 
 docker exec -it "${PROJECT}"-vscode /bin/bash -c "
-    sudo chown -R coder:www-data /workspace
+  chown -R www-data:www-data /workspace
+"
+docker exec -it "${PROJECT}"-app bash -c "
+  chmod g+sw /var/www
 "
 
 ./bin/control

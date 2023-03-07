@@ -26,32 +26,3 @@ fi
 if docker inspect -f '{{.State.Running}}' "${PROJECT}"-vscode &>/dev/null; then
   docker stop "${PROJECT}"-vscode
 fi
-
-
-
-
-
-if docker inspect "${PROJECT}"-app &>/dev/null; then
-  echo
-  echo "Delete ${PROJECT} containers:"
-  echo
-  docker rm "${PROJECT}"-app
-fi
-
-if docker inspect "${PROJECT}"-mysql &>/dev/null; then
-  docker rm "${PROJECT}"-mysql
-fi
-
-if docker inspect "${PROJECT}"-nginx &>/dev/null; then
-  docker rm "${PROJECT}"-nginx
-fi
-
-if docker inspect "${PROJECT}"-redis &>/dev/null; then
-  docker rm "${PROJECT}"-redis
-fi
-
-if docker inspect "${PROJECT}"-vscode &>/dev/null; then
-  docker rm "${PROJECT}"-vscode
-fi
-
-clear

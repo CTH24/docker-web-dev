@@ -51,7 +51,7 @@ select opt in "${systems[@]}"; do
   "phpstorm") phpstorm . && ./bin/control && break ;;
   "code") code . && ./bin/control && break ;;
   "browser") open "http://${PROJECT}.localhost" && ./bin/control && break ;;
-  "Quit") clear && break ;;
+  "Quit") clear && ./bin/container-stop && break ;;
   *) echo "Invalid option $REPLY" ;;
   esac
 done

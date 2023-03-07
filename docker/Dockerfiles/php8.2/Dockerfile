@@ -1,25 +1,27 @@
-FROM php:8.2.0RC6-fpm
+FROM php:8.2.0RC1-fpm
 
 RUN apt-get update && apt-get install -y \
     curl \
     default-mysql-client \
     ghostscript \
     git \
-    iputils-ping \
     imagemagick \
-    libmagickwand-dev \
+    iputils-ping \
     less \
-    libicu-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
     libcurl4-openssl-dev \
+    libfreetype6-dev \
+    libicu-dev \
+    libjpeg62-turbo-dev \
+    libmagickwand-dev \
     libmemcached-dev \
-    libzip-dev \
+    libpng-dev \
     libwebp-dev \
+    libzip-dev \
     unzip \
     wget \
-    zip
+    zip \
+
+RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp\
 	&& docker-php-ext-install -j$(nproc) gd

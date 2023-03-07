@@ -4,7 +4,7 @@
 
 . .env
 
-./bin/start-container
+./bin/container-start
 
 echo 'PROJECT_TYPE="Symfony '"${SYMFONY_VERSION}"'"' >>.env
 
@@ -17,7 +17,10 @@ else
 fi
 
 docker exec -it "${PROJECT}"-vscode /bin/bash -c "
-    sudo chown -R coder:www-data /workspace
+  chown -R www-data:www-data /workspace
+"
+docker exec -it "${PROJECT}"-app bash -c "
+  chmod g+sw /var/www
 "
 
 ./bin/control

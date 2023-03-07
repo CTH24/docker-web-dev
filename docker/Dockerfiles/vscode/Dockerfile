@@ -4,26 +4,24 @@ EXPOSE 8080
 
 USER root
 
-# Install Basic Dependencies
-RUN apt-get update && \
-    apt-get install -y \
-        bat \
-        btop \
-        ca-certificates \
-        curl \
-        git \
-        nodejs \
-        npm \
-        ranger \
-        sl \
-        software-properties-common \
-        speedtest-cli \
-        iputils-ping \
-        tldr \
-        tree \
-        unzip \
-        wget \
-        zsh
+RUN apt-get update && apt-get install -y \
+    bat \
+    btop \
+    ca-certificates \
+    curl \
+    git \
+    iputils-ping \
+    nodejs \
+    npm \
+    ranger \
+    sl \
+    software-properties-common \
+    speedtest-cli \
+    tldr \
+    tree \
+    unzip \
+    wget \
+    zsh
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
@@ -103,6 +101,7 @@ RUN code-server --install-extension bmewburn.vscode-intelephense-client && \
     code-server --install-extension enkia.tokyo-night
 
 RUN echo "alias vi=nvim" >> /root/.zshrc && \
+    echo "alias vim=nvim" >> /root/.zshrc && \
     echo "alias nah='git reset --hard && git clean -df'" >> /root/.zshrc && \
     echo "alias wip='git add . && git commit -m \"wip\"'" >> /root/.zshrc 
 

@@ -4,7 +4,8 @@
 
 clear
 ./bin/select-php-version
-./bin/start-container
+./bin/container-start
+
 if [ "${PROJECT_TYPE}" = "WordPress" ]; then
   docker exec -it "${PROJECT}"-app bash -c "
   cd /var/www/public \

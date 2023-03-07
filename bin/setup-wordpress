@@ -5,7 +5,7 @@ echo 'PHP_VERSION="8.0"' >>.env
 
 . .env
 
-./bin/start-container
+./bin/container-start
 
 if [ ! -d "$PROJECT_PATH"/systems/wordpress ]; then
   mkdir -p "${PROJECT_PATH}"/systems/wordpress
@@ -54,8 +54,22 @@ docker exec -it "${PROJECT}"-app bash -c "cd /var/www/public \
     display-environment-type"
 
 docker exec -it "${PROJECT}"-vscode /bin/bash -c "
-    sudo chown -R coder:www-data /workspace
+  chown -R www-data:www-data /workspace
+"
+docker exec -it "${PROJECT}"-app bash -c "
+  chmod g+sw /var/www
 "
 
+if [ "${PROJECT_TYPE}" = "WordPress" ]; then
+  docker exec -it "${PROJECT}"-vscode bash -c "
+  cd /root \
+  && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && mv wp-cli.phar wp \
+  && chmod +x wp \
+  && mv wp /usr/local/bin \
+  && echo 'alias wp=\"wp --allow-root\"' >> /root/.zshrc \
+  && wget https://raw.githubusercontent.com/wp-cli/wp-cli/v2.6.0/utils/wp-completion.bash \
+  && echo 'source /root/wp-completion.bash' >> /root/.bashrc"
+fi
 
 ./bin/control
