@@ -17,9 +17,10 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libwebp-dev \
     libzip-dev \
+    tzdata \
     unzip \
     wget \
-    zip \
+    zip 
 
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
