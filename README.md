@@ -6,6 +6,8 @@ Docker based environments for web development.
 
 ![image](https://user-images.githubusercontent.com/1764695/223383928-20c94bad-ea84-4a7d-9f1d-04fe0f92ff70.png)
 
+![image](https://user-images.githubusercontent.com/1764695/223384804-eed35f70-3291-4b20-8ad8-052be876b058.png)
+
 ## Installation
 
 ### Release
