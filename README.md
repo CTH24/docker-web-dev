@@ -9,8 +9,8 @@ Docker based environments for web development.
 ### Release
 
 ```bash
-unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.1.2.zip) \
-  && mv web-dev-docker-1.1.2 project-name
+unzip =(wget -qO- https://github.com/CTH24/web-dev-docker/archive/refs/tags/v1.1.3.zip) \
+  && mv web-dev-docker-1.1.3 project-name
 ```
 ## Commands
 
